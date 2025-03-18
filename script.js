@@ -1,7 +1,6 @@
 function registrar(){
     let tarefa = document.getElementById('taskInput')
     let priority = document.getElementById('priority')
-    console.log(priority.value)
     if(tarefa.value.length === 0 || tarefa.value == ' '){
         alert('Você não deve deixar espaços em branco')
     }else if(priority.value > '3' || priority.value < '1'){
@@ -11,7 +10,6 @@ function registrar(){
     }
 }
 function deletar(item, tarefas){
-    console.log('chegou aqui')
     tarefas.splice(item, 1)
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
     taskList()
@@ -40,21 +38,17 @@ function taskList(){
 function addEntry(tarefa, prioridade){
     let tarefas = JSON.parse(localStorage.getItem('tarefas'))
     if(tarefas == null) tarefas = []
-    console.log(tarefas)
     let entry = {tarefa, prioridade}
     tarefas.push(entry)
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
     taskList()
 }
 function ordenar(){
-    console.log('chegou aqui')
     let ordem = document.getElementById('priorityFilter')
     let tarefas = JSON.parse(localStorage.getItem('tarefas'))
     let ordenação
     if(ordem.value == '1'){
-        console.log('chegou aqui')
-         ordenação = tarefas.sort((a, b) => a.prioridade - b.prioridade)
-        console.log(ordenação)
+        ordenação = tarefas.sort((a, b) => a.prioridade - b.prioridade)
     }else if(ordem.value == '3'){
          ordenação = tarefas.sort((a, b)=> b.prioridade - a.prioridade)
     }else if(ordem.value == '2') {
