@@ -1,3 +1,19 @@
+function verificar(name, age, course, grade){
+    if(name.value.length == 0 || course.value.length == 0 || age.value.length == 0 || grade.value.length == 0){
+        alert('Preencha todos os campos')
+        return false
+    }else if(Number(age.value) < 1 /* No meu código recem nascidos nao estudam*/ || Number(age.value) > 120/*Nem idosos*/){
+        alert('Insira uma idade válida')
+        age.focus()
+        return false
+    }else if(Number(grade.value) > 10 || Number(grade.value) < 0){
+        alert('Insira uma nota de 0 a 10')
+        grade.focus()
+        return false
+    }
+    return true
+}
+
 function guardar(){
     let name = document.getElementById('student-name')
     let age = document.getElementById('student-age')
@@ -5,15 +21,7 @@ function guardar(){
     let grade = document.getElementById('student-grade')
     let res = document.getElementById('students-table')
 
-    if(name.value.length == 0 || course.value.length == 0 || age.value.length == 0 || grade.value.length == 0){
-        alert('Preencha todos os campos')
-    }else if(Number(age.value) < 1 /* No meu código recem nascidos nao estudam*/ || Number(age.value) > 120/*Nem idosos*/){
-        alert('Insira uma idade válida')
-        age.focus()
-    }else if(Number(grade.value) > 10 || Number(grade.value) < 0){
-        alert('Insira uma nota de 0 a 10')
-        grade.focus()
-    }else{
+    if(verificar(name, age, course, grade)){
         addStudent(name.value, Number(age.value), course.value, Number(grade.value))
         name.value = '';
         age.value = '';
@@ -60,19 +68,21 @@ function editar(index, data){
     course.value = student.course
     grade.value = student.grade
 
-    button.addEventListener('click', () => {//lembrar da verificação
-        student.name = name.value
-        student.age = age.value
-        student.course = course.value
-        student.grade = grade.value
-        data[index] = student
-        localStorage.setItem('students', JSON.stringify(data))
-        addTable()
+    button.addEventListener('click', () => {
+        if (verificar(name, age, course, grade)){
+            student.name = name.value
+            student.age = age.value
+            student.course = course.value
+            student.grade = grade.value
+            data[index] = student
+            localStorage.setItem('students', JSON.stringify(data))
+            addTable()
 
-        name.value = ''
-        age.value = ''
-        course.value = ''
-        grade.value = ''
+            name.value = ''
+            age.value = ''
+            course.value = ''
+            grade.value = ''
+        }
     })
 }
 
