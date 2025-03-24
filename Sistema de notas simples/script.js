@@ -15,11 +15,10 @@ function guardar(){
         grade.focus()
     }else{
         addStudent(name.value, Number(age.value), course.value, Number(grade.value))
-        //alert('OK')
-       /*/ name.value = '';
+        name.value = '';
         age.value = '';
         course.value = '';
-        grade.value = '';*/
+        grade.value = '';
     }
 }
 function addStudent(name, age, course, grade){
@@ -37,8 +36,44 @@ function deletar(index, data){
     addTable()
     console.log('s')
 }
-function editar(){
+function editar(index, data){
+    console.log('teste')
+    let student = data[index]
+    let form = document.getElementById('student-form')
+    let buttonSave = document.getElementById('button-save')
 
+    let existingButton = document.getElementById('edit-button')
+    if(existingButton) existingButton.remove()
+
+    let button = document.createElement('button')
+    button.setAttribute('id', 'edit-button')
+    button.textContent = 'Editar'
+    form.appendChild(button)
+    
+    let name = document.getElementById('student-name')
+    let age = document.getElementById('student-age')
+    let course = document.getElementById('student-course')
+    let grade = document.getElementById('student-grade')
+    name.focus()
+    name.value = student.name
+    age.value = student.age
+    course.value = student.course
+    grade.value = student.grade
+
+    button.addEventListener('click', () => {//lembrar da verificação
+        student.name = name.value
+        student.age = age.value
+        student.course = course.value
+        student.grade = grade.value
+        data[index] = student
+        localStorage.setItem('students', JSON.stringify(data))
+        addTable()
+
+        name.value = ''
+        age.value = ''
+        course.value = ''
+        grade.value = ''
+    })
 }
 
 function addTable(){
