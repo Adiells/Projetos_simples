@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Notas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciador de Notas</h1>
+
+        <!-- Formulário de cadastro de estudantes -->
+        <div class="form-container">
+            <form id="student-form">
+                <input type="text" id="student-name" placeholder="Nome do Estudante" required>
+                <input type="number" id="student-age" placeholder="Idade" required>
+                <input type="text" id="student-course" placeholder="Curso" step="0.1" required>
+                <input type="number" id="student-grade" placeholder="Nota (0-10)" step="0.1" required>
+                <button type="button" onclick="guardar()">Adicionar Estudante</button>
+                <button type="button" onclick="limparTabelaDuranteTestes()">Limpar</button>
+            </form>
+        </div>
+
+        <div id="table-container">
+            <h2>Estudantes Cadastrados</h2>
+            <table id="student-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Curso</th>
+                        <th>Nota</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody  id="student-resp">
+                    <!-- Dados dos estudantes serão inseridos aqui -->
+                    <tbody>
+            
+                    </tbody>
+            
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
