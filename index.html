@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos Simples</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Gradiente de fundo suave */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh; /* Garante que o gradiente cubra toda a tela */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem; /* Adiciona padding para telas menores */
+        }
+        .project-card {
+            /* Efeito de vidro fosco */
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 6px 6px rgba(0, 0, 0, 0.1);
+        }
+        .project-card a {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Animação de entrada para o título */
+        .fade-in-down {
+            animation: fadeInDown 0.8s ease-out;
+        }
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Animação de entrada para os cards */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Delay para animação dos cards */
+        .project-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .project-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 py-8 text-center max-w-3xl">
+        <header class="mb-12 fade-in-down">
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-700">
+                Projetos Simples
+            </h1>
+            <p class="text-lg text-gray-600 mt-4">
+                Alguns dos meus primeiros projetos enquanto aprendia desenvolvimento web.
+            </p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="project-card rounded-xl p-6 shadow-lg fade-in-up">
+                <h2 class="text-2xl font-semibold text-sky-700 mb-3">Sistema de Notas Simples</h2>
+                <p class="text-gray-600 mb-6">
+                    Uma aplicação web simples para gerenciar notas, criada durante meus estudos iniciais de HTML, CSS e JavaScript.
+                </p>
+                <a href="/docs/Sistema de notas simples/index.html" id="link-notas" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50">
+                    Acessar Projeto
+                </a>
+            </div>
+
+            <div class="project-card rounded-xl p-6 shadow-lg fade-in-up">
+                <h2 class="text-2xl font-semibold text-teal-700 mb-3">Gerenciador de Tarefas Simples</h2>
+                <p class="text-gray-600 mb-6">
+                    Um gerenciador de tarefas básico, desenvolvido para praticar os fundamentos da programação e organização de projetos.
+                </p>
+                <a href="/docs/Gerenciador de tarefas simples/index.html" id="link-tarefas" class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50">
+                    Acessar Projeto
+                </a>
+            </div>
+        </main>
+
+        <footer class="mt-16 text-center fade-in-up" style="animation-delay: 0.6s;">
+            <p class="text-gray-500 text-sm mt-1">
+                &copy; <span id="currentYear"></span> Adiel Emilson
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
